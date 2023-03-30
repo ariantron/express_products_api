@@ -1,3 +1,6 @@
+const dotenv = require('dotenv')
+dotenv.config()
+
 export default {
-    port: 8080
+    port: process.env.PORT
 }
