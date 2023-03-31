@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 })
 
-export interface userDocument extends mongoose.Document {
+export interface UserDocument extends mongoose.Document {
     email: string
     name: string
     password: string
@@ -21,7 +21,7 @@ export interface userDocument extends mongoose.Document {
 }
 
 userSchema.pre("save", async function (next) {
-    const user = this as userDocument
+    const user = this as UserDocument
     if (!user.isModified("password"))
         return next()
     const salt = await bcrypt.genSalt(config.get<number>('saltWorkFactor'))
@@ -30,10 +30,10 @@ userSchema.pre("save", async function (next) {
 })
 
 userSchema.methods.comparePasswords = async function (candidatePassword: string): Promise<boolean> {
-    const user = this as userDocument
+    const user = this as UserDocument
     return bcrypt.compare(candidatePassword, user.password).catch((e) => false)
 }
 
-const userModel = mongoose.model('User', userSchema)
+const UserModel = mongoose.model('User', userSchema)
 
-export default userModel
+export default UserModel
