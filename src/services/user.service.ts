@@ -1,7 +1,7 @@
 import UserModel, {UserInput} from "../models/user.model"
 import {omit} from "lodash"
 
-export async function create(input: UserInput) {
+export async function createUser(input: UserInput) {
     try {
         const user = await UserModel.create(input)
         return omit(user.toJSON, "password")
