@@ -1,9 +1,10 @@
 import {Request, Response} from "express"
 import UserService from "../services/user.service";
 import logger from "../utills/logger";
+import {CreateUserInput} from "../schemas/user.schema";
 
 class UserController {
-    static async create(request: Request, response: Response) {
+    static async create(request: Request<{}, {}, CreateUserInput>, response: Response) {
         try {
             const user = await UserService.create(request.body)
             return response.send(user)
