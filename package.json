@@ -35,7 +35,6 @@
     "@types/nanoid": "^3.0.0",
     "@types/node": "^18.15.11",
     "@types/pino": "^7.0.5",
-    "basetag": "^2.1.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.2"
   }
