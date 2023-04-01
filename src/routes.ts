@@ -1,6 +1,8 @@
 import {Express, Request, Response} from "express"
 
 function routes(app: Express) {
+
+    //test
     app.get('/test', (request: Request, response: Response) => {
         response.sendStatus(200)
     })
