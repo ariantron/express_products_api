@@ -17,6 +17,6 @@ export interface SessionDocument extends mongoose.Document {
     updatedAt: Date
 }
 
-const SessionModel = mongoose.model('User', sessionSchema)
+const SessionModel = mongoose.model<SessionDocument>('User', sessionSchema)
 
 export default SessionModel
