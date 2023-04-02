@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import {UserDocument} from "./user.model";
+import {UserDocument} from "./user.model"
 
 const sessionSchema = new mongoose.Schema({
     user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
@@ -17,6 +17,6 @@ export interface SessionDocument extends mongoose.Document {
     updatedAt: Date
 }
 
-const SessionModel = mongoose.model<SessionDocument>('User', sessionSchema)
+const SessionModel = mongoose.model<SessionDocument>('Session', sessionSchema)
 
 export default SessionModel
