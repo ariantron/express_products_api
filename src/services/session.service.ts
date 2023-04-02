@@ -1,4 +1,4 @@
-import SessionModel from "../models/session.model";
+import SessionModel from "../models/session.model"
 
 class SessionService {
     static async create(userId: string, userAgent: string) {

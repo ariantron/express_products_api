@@ -1,8 +1,8 @@
 import {Request, Response} from "express"
-import UserService from "../services/user.service";
-import logger from "../utills/logger.utill";
-import {CreateUserInput} from "../schemas/user.schema";
-import {HttpStatusCode} from "../enums/httpStatusCode.enum";
+import UserService from "../services/user.service"
+import logger from "../utills/logger.utill"
+import {CreateUserInput} from "../schemas/user.schema"
+import {HttpStatusCode} from "../enums/httpStatusCode.enum"
 
 class UserController {
     static async create(request: Request<{}, {}, CreateUserInput["body"]>, response: Response) {
