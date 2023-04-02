@@ -5,7 +5,6 @@ import SessionService from "../services/session.service"
 import {signJwt} from "../utills/jwt.utill"
 import config from "config"
 import TokenType from "../enums/tokenType.enum"
-import logger from "../utills/logger.utill";
 
 class UserSessionController {
     static async create(request: Request, response: Response) {
