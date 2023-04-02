@@ -5,7 +5,7 @@ const pretty = require('pino-pretty')
 let options = {
     colorize: true,
     customPrettifiers: {
-        time: timestamp => dayjs().format()
+        time: () => dayjs().format()
     }
 }
 const stream = pretty(options)
