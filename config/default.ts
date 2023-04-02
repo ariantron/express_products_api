@@ -6,6 +6,10 @@ export default {
     port: env.PORT,
     dbUri: env.DB_URI,
     saltWorkFactor: 10,
-    publicKey: env.PUBLIC_KEY,
-    privateKey: env.PRIVATE_KEY
+    accessTokenTtl: '15m',
+    refreshTokenTtl: '1y',
+    accessTokenPublicKey: env.ACCESS_TOKEN_PUBLIC_KEY,
+    accessTokenPrivateKey: env.ACCESS_TOKEN_PRIVATE_KEY,
+    refreshTokenPublicKey: env.REFRESH_TOKEN_PUBLIC_KEY,
+    refreshTokenPrivateKey: env.REFRESH_TOEKN_PRIVATE_KEY
 }
