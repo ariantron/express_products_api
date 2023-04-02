@@ -1,8 +1,10 @@
 import {Express, Request, Response} from "express"
-import validateResource from "./middlewares/validateResource.middleware";
-import {createUserSchema} from "./schemas/user.schema";
-import UserController from "./controllers/user.controller";
-import {HttpStatusCode} from "./enums/httpStatusCode.enum";
+import validateResource from "./middlewares/validateResource.middleware"
+import {createUserSchema} from "./schemas/user.schema"
+import UserController from "./controllers/user.controller"
+import {HttpStatusCode} from "./enums/httpStatusCode.enum"
+import {createSessionSchema} from "./schemas/session.schema"
+import SessionController from "./controllers/session.controller"
 
 function routes(app: Express) {
 
@@ -14,6 +16,10 @@ function routes(app: Express) {
     //users
     //--create user
     app.post('/users',validateResource(createUserSchema),UserController.create)
+
+    //sessions
+    //--create session
+    app.post('/sessions',validateResource(createSessionSchema),SessionController.create)
 
 }
 
