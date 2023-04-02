@@ -1,6 +1,6 @@
 import {Request, Response} from "express"
 import UserService from "../services/user.service";
-import logger from "../utills/logger";
+import logger from "../utills/logger.utill";
 import {CreateUserInput} from "../schemas/user.schema";
 
 class UserController {

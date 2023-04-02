@@ -1,7 +1,7 @@
 import express from "express"
 import config from "config"
-import connect from "./utills/db"
-import logger from "./utills/logger"
+import connect from "./utills/db.utill"
+import logger from "./utills/logger.utill"
 import routes from "./routes"
 
 const app = express()
