@@ -1,5 +1,5 @@
-import UserModel, {UserInput} from "../models/user.model"
 import {omit} from "lodash"
+import UserModel, {UserInput} from "../models/user.model";
 
 class UserService {
     static async create(input: UserInput) {
@@ -9,6 +9,14 @@ class UserService {
         } catch (error: any) {
             throw new Error(error)
         }
+    }
+
+    static async validatePassword({email, password}: { email: string, password: string }) {
+        const user = await UserModel.findOne({email})
+        if (!user) return false
+        const isValid = await user.comparePasswords(password)
+        if (!isValid) return false
+        return omit(user.toJSON(), "password")
     }
 }
 
