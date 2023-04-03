@@ -11,5 +11,5 @@ export default {
     accessTokenPublicKey: env.ACCESS_TOKEN_PUBLIC_KEY,
     accessTokenPrivateKey: env.ACCESS_TOKEN_PRIVATE_KEY,
     refreshTokenPublicKey: env.REFRESH_TOKEN_PUBLIC_KEY,
-    refreshTokenPrivateKey: env.REFRESH_TOEKN_PRIVATE_KEY
+    refreshTokenPrivateKey: env.REFRESH_TOKEN_PRIVATE_KEY
 }

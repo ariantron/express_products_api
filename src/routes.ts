@@ -6,6 +6,13 @@ import {HttpStatusCode} from "./enums/httpStatusCode.enum"
 import {createSessionSchema} from "./schemas/session.schema"
 import UserSessionController from "./controllers/session.controller"
 import requireUser from "./middlewares/requireUser.middleware"
+import {
+    createProductSchema,
+    deleteProductSchema,
+    getProductSchema,
+    updateProductSchema
+} from "./schemas/product.schema"
+import ProductController from "./controllers/product.controller"
 
 function routes(app: Express) {
     //test
@@ -24,6 +31,16 @@ function routes(app: Express) {
     app.get("/api/sessions", requireUser, UserSessionController.get)
     //--delete session
     app.delete("/api/sessions", requireUser, UserSessionController.delete)
+
+    //products
+    //--create product
+    app.post("/api/products", [requireUser, validateResource(createProductSchema)], ProductController.create)
+    //--update product
+    app.put("/api/products/:productId", [requireUser, validateResource(updateProductSchema)], ProductController.update)
+    //--get product
+    app.get("/api/products/:productId", validateResource(getProductSchema), ProductController.get)
+    //--delete product
+    app.delete("/api/products/:productId", [requireUser, validateResource(deleteProductSchema)], ProductController.delete)
 }
 
 export default routes
