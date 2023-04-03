@@ -5,7 +5,6 @@ import SessionService from "../services/session.service"
 import {signJwt} from "../utills/jwt.utill"
 import config from "config"
 import TokenType from "../enums/tokenType.enum"
-import logger from "../utills/logger.utill";
 
 class UserSessionController {
     static async create(request: Request, response: Response) {
@@ -35,10 +34,19 @@ class UserSessionController {
         return response.send({accessToken, refreshToken})
     }
 
-    static async get(request: Request, response: Response){
+    static async get(request: Request, response: Response) {
         const userId = response.locals.user._id
-        const sessions = await SessionService.find({ user: userId, valid: true })
+        const sessions = await SessionService.find({user: userId, valid: true})
         return response.send(sessions)
+    }
+
+    static async delete(request: Request, response: Response) {
+        const sessionId = response.locals.user.session
+        await SessionService.update({_id: sessionId}, {valid: false})
+        return response.send({
+            accessToken: null,
+            refreshToken: null
+        })
     }
 }
 
