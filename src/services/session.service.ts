@@ -1,5 +1,5 @@
 import SessionModel, {SessionDocument} from "../models/session.model"
-import {FilterQuery} from "mongoose"
+import {FilterQuery, UpdateQuery} from "mongoose"
 import {signJwt, verifyJwt} from "../utills/jwt.utill"
 import {get} from "lodash"
 import TokenType from "../enums/tokenType.enum"
@@ -32,6 +32,10 @@ class SessionService {
             TokenType.AccessTokenPrivateKey,
             {expiresIn: config.get("accessTokenTtl")} // 15 minutes
         );
+    }
+
+    static async update(query: FilterQuery<SessionDocument>, update: UpdateQuery<SessionDocument>) {
+        return SessionModel.updateOne(query, update)
     }
 }
 
