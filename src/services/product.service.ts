@@ -18,6 +18,14 @@ class ProductService {
         }
     }
 
+    static async index(query: FilterQuery<ProductDocument>, options: QueryOptions = {lean: true}) {
+        try {
+            return await ProductModel.find(query, {}, options)
+        } catch (error: any) {
+            throw new Error(error)
+        }
+    }
+
     static async update(query: FilterQuery<ProductDocument>, update: UpdateQuery<ProductDocument>, options: QueryOptions) {
         try {
             return ProductModel.findOneAndUpdate(query, update, options)
