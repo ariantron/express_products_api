@@ -5,7 +5,6 @@ import UserController from "./controllers/user.controller"
 import {HttpStatusCode} from "./enums/httpStatusCode.enum"
 import {createSessionSchema} from "./schemas/session.schema"
 import UserSessionController from "./controllers/session.controller"
-import SessionController from "./controllers/session.controller"
 import requireUser from "./middlewares/requireUser.middleware"
 
 function routes(app: Express) {
@@ -22,7 +21,9 @@ function routes(app: Express) {
     //--create session
     app.post('/api/sessions', validateResource(createSessionSchema), UserSessionController.create)
     //--get sessions
-    app.get("/api/sessions", requireUser, SessionController.get)
+    app.get("/api/sessions", requireUser, UserSessionController.get)
+    //--delete session
+    app.delete("/api/sessions", requireUser, UserSessionController.delete)
 }
 
 export default routes
