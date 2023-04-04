@@ -40,7 +40,7 @@ function routes(app: Express) {
     //--get product
     app.get("/api/products/:productId", validateResource(getProductSchema), ProductController.get)
     //--index products
-    app.get("/api/products", [requireUser], ProductController.index)
+    app.get("/api/products", ProductController.index)
     //--delete product
     app.delete("/api/products/:productId", [requireUser, validateResource(deleteProductSchema)], ProductController.delete)
 }
